@@ -18,9 +18,24 @@ export default function Navigation() {
         >
           okaken
         </Link>
+
+        {/* Desktop nav links — visible on lg+ */}
+        <div className="hidden lg:flex items-center gap-8">
+          {stories.map((story) => (
+            <Link
+              key={story.id}
+              href={`/${story.slug}`}
+              className="font-[family-name:var(--font-zen)] text-sm tracking-wider text-[var(--muted)] transition-colors duration-300 hover:text-[var(--text)]"
+            >
+              {story.title}
+            </Link>
+          ))}
+        </div>
+
+        {/* Hamburger — hidden on lg+ */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-50 flex flex-col items-center justify-center w-10 h-10 gap-1.5"
+          className="relative z-50 flex flex-col items-center justify-center w-10 h-10 gap-1.5 lg:hidden"
           aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
         >
           <motion.span
@@ -41,6 +56,7 @@ export default function Navigation() {
         </button>
       </nav>
 
+      {/* Mobile overlay menu — only used on < lg */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -48,7 +64,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-[var(--bg)]/95 backdrop-blur-sm flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-[var(--bg)]/95 backdrop-blur-sm flex items-center justify-center lg:hidden"
           >
             <div className="flex flex-col items-center gap-8">
               <motion.div
