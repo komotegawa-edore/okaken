@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  /* Global palette */
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --text: #e8e4df;
+  --muted: #6b6560;
+
+  /* Tanpen 1 - Consciousness / Light */
+  --t1-primary: #f5e6c8;
+  --t1-secondary: #e8d5f0;
+  --t1-accent: #faf3e0;
+  --t1-void: #0d0b14;
+
+  /* Tanpen 2 - Murder / Detachment */
+  --t2-primary: #c4c0b8;
+  --t2-secondary: #8b1a1a;
+  --t2-accent: #2a2d35;
+  --t2-void: #0c0c0e;
+
+  /* Tanpen 4 - Boundary / Manifest */
+  --t4-primary: #d4e0d0;
+  --t4-secondary: #00ff88;
+  --t4-accent: #1a2a1a;
+  --t4-void: #0a0c0a;
+
+  /* Tanpen 6 - Text / Transformation */
+  --t6-primary: #d9cfc0;
+  --t6-secondary: #4a3f2f;
+  --t6-accent: #3a6b8c;
+  --t6-void: #0f0d0a;
+
+  --t6-life: #e06040;
+  --t4-warning: #ff6b35;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-shippori), "Hiragino Mincho ProN", serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(245, 230, 200, 0.3);
+  color: var(--text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 2px;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* CRT scanline effect for tanpen2 */
+.crt-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Grain overlay */
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+/* Grid pattern for tanpen4 */
+.grid-pattern {
+  background-image: linear-gradient(
+      rgba(0, 255, 136, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Ink bleed keyframe for tanpen6 */
+@keyframes inkBleed {
+  0% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+  50% {
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.ink-bleed {
+  animation: inkBleed 4s ease-in-out infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
