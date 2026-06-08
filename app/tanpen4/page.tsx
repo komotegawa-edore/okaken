@@ -9,6 +9,8 @@ import StoryNavigation from "@/components/story/StoryNavigation";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import GrainOverlay from "@/components/visual/GrainOverlay";
 import PageTransition from "@/components/layout/PageTransition";
+import FullTextSection from "@/components/story/FullTextSection";
+import { fullText } from "@/lib/fulltext/tanpen4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -271,6 +273,7 @@ export default function Tanpen4Page() {
       <HeroSection />
       <SynopsisSection />
       <ExcerptSection />
+      <FullTextSection sections={fullText} theme={story.theme} />
       <ClosingSection />
       <StoryNavigation currentSlug="tanpen4" />
     </PageTransition>

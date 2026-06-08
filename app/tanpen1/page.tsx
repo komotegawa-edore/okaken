@@ -13,6 +13,8 @@ import ScrollProgress from "@/components/layout/ScrollProgress";
 import FloatingParticles from "@/components/animation/FloatingParticles";
 import GrainOverlay from "@/components/visual/GrainOverlay";
 import PageTransition from "@/components/layout/PageTransition";
+import FullTextSection from "@/components/story/FullTextSection";
+import { fullText } from "@/lib/fulltext/tanpen1";
 import { useMousePosition } from "@/hooks/useMousePosition";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -170,6 +172,8 @@ export default function Tanpen1Page() {
         highlightWords={["光", "色", "意識", "暗闇", "記憶"]}
         highlightColor={story.theme.primary}
       />
+
+      <FullTextSection sections={fullText} theme={story.theme} />
 
       <ClosingSection />
 

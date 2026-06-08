@@ -11,6 +11,8 @@ import GlitchText from "@/components/animation/GlitchText";
 import GrainOverlay from "@/components/visual/GrainOverlay";
 import NoiseBackground from "@/components/visual/NoiseBackground";
 import PageTransition from "@/components/layout/PageTransition";
+import FullTextSection from "@/components/story/FullTextSection";
+import { fullText } from "@/lib/fulltext/tanpen2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -260,6 +262,7 @@ export default function Tanpen2Page() {
       <HeroSection />
       <SynopsisSection />
       <ExcerptSection />
+      <FullTextSection sections={fullText} theme={story.theme} />
       <ClosingSection />
       <StoryNavigation currentSlug="tanpen2" />
     </PageTransition>

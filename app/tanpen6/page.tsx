@@ -10,6 +10,8 @@ import ScrollProgress from "@/components/layout/ScrollProgress";
 import GrainOverlay from "@/components/visual/GrainOverlay";
 import InkBleed from "@/components/visual/InkBleed";
 import PageTransition from "@/components/layout/PageTransition";
+import FullTextSection from "@/components/story/FullTextSection";
+import { fullText } from "@/lib/fulltext/tanpen6";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -360,6 +362,7 @@ export default function Tanpen6Page() {
       <HeroSection />
       <SynopsisSection />
       <ExcerptSection />
+      <FullTextSection sections={fullText} theme={story.theme} />
       <ClosingSection />
       <StoryNavigation currentSlug="tanpen6" />
     </PageTransition>
