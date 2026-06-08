@@ -45,7 +45,7 @@ function RenderSection({
     case "paragraph":
       return (
         <p
-          className="font-[family-name:var(--font-shippori)] text-sm md:text-base leading-[2] md:leading-[2.2] tracking-wide mb-6 whitespace-pre-line"
+          className="font-[family-name:var(--font-shippori)] text-sm md:text-base lg:text-lg leading-[2] md:leading-[2.2] tracking-wide mb-6 lg:mb-8 whitespace-pre-line"
           style={{ color: `${theme.primary}dd` }}
         >
           {section.content}
@@ -55,11 +55,11 @@ function RenderSection({
     case "question":
       return (
         <blockquote
-          className="my-14 pl-5 md:pl-8 border-l-2 py-3"
+          className="my-14 lg:my-16 pl-5 md:pl-8 border-l-2 py-3"
           style={{ borderColor: `${theme.secondary}50` }}
         >
           <p
-            className="font-[family-name:var(--font-shippori)] text-sm md:text-base leading-[2] tracking-wider italic"
+            className="font-[family-name:var(--font-shippori)] text-sm md:text-base lg:text-lg leading-[2] tracking-wider italic"
             style={{ color: `${theme.primary}99` }}
           >
             {section.content}
@@ -69,9 +69,9 @@ function RenderSection({
 
     case "quote":
       return (
-        <div className="my-12 md:my-14 text-center px-4">
+        <div className="my-12 md:my-14 lg:my-16 text-center px-4">
           <p
-            className="font-[family-name:var(--font-cormorant)] text-base md:text-lg lg:text-xl leading-[1.8] tracking-wider italic"
+            className="font-[family-name:var(--font-cormorant)] text-base md:text-lg lg:text-2xl leading-[1.8] tracking-wider italic"
             style={{ color: theme.accent || theme.secondary }}
           >
             {section.content}
@@ -136,7 +136,7 @@ export default function FullTextSection({
         style={{ backgroundColor: `${theme.primary}15` }}
       />
 
-      <div className="max-w-2xl mx-auto px-6 md:px-8">
+      <div className="max-w-2xl lg:max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Toggle Button */}
         <div className="flex justify-center">
           <button

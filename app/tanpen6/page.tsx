@@ -143,7 +143,7 @@ function SynopsisSection() {
       style={{ backgroundColor: story.theme.void }}
     >
       <WashiTexture />
-      <div ref={ref} className="relative z-10 max-w-2xl mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-2xl lg:max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 0.6 } : { opacity: 0 }}
@@ -164,7 +164,7 @@ function SynopsisSection() {
           transition={{ duration: 1, delay: 0.2 }}
         >
           {isInView ? (
-            <p className="text-lg md:text-xl leading-[2.2] tracking-wide" style={{ color: story.theme.primary }}>
+            <p className="text-lg md:text-xl lg:text-2xl leading-[2.2] tracking-wide" style={{ color: story.theme.primary }}>
               {story.synopsis.split(new RegExp(`(${lifeWords.join("|")})`)).map((part, i) =>
                 lifeWords.includes(part) ? (
                   <motion.span
@@ -241,7 +241,7 @@ function ExcerptSection() {
       <WashiTexture />
       <InkBleed />
 
-      <div ref={ref} className="relative z-10 max-w-2xl mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-2xl lg:max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 0.6 } : { opacity: 0 }}
@@ -262,7 +262,7 @@ function ExcerptSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3 + i * 0.4 }}
-            className="text-base md:text-lg leading-[2] tracking-wide mb-8 last:mb-0"
+            className="text-base md:text-lg lg:text-xl leading-[2] tracking-wide mb-8 last:mb-0"
             style={{ color: story.theme.primary }}
           >
             {p.split("").map((char, j) => (

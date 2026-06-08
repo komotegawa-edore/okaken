@@ -99,7 +99,7 @@ function SynopsisSection() {
       style={{ backgroundColor: story.theme.accent }}
     >
       <NoiseBackground opacity={0.06} />
-      <div ref={ref} className="relative z-10 max-w-lg mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-lg lg:max-w-2xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 0.6 } : { opacity: 0 }}
@@ -117,7 +117,7 @@ function SynopsisSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="text-base leading-[2.2] tracking-wide"
+          className="text-base lg:text-lg leading-[2.2] tracking-wide"
           style={{ color: story.theme.primary }}
         >
           <GlitchText
@@ -140,7 +140,7 @@ function ExcerptSection() {
 
   return (
     <section className="relative py-32 md:py-48 overflow-hidden" style={{ backgroundColor: story.theme.void }}>
-      <div ref={ref} className="relative z-10 max-w-lg mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-lg lg:max-w-2xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 0.6 } : { opacity: 0 }}
@@ -160,7 +160,7 @@ function ExcerptSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3 + i * 0.3 }}
-            className="text-sm leading-[2.2] tracking-wide mb-8 last:mb-0"
+            className="text-sm lg:text-base leading-[2.2] tracking-wide mb-8 last:mb-0"
             style={{ color: story.theme.primary }}
           >
             {p.split(new RegExp(`(${highlightWords.join("|")})`)).map((part, j) =>

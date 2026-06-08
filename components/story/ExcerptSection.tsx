@@ -50,7 +50,7 @@ export default function ExcerptSection({
   return (
     <section className="relative py-32 md:py-48 overflow-hidden">
       {children}
-      <div ref={ref} className="relative z-10 max-w-2xl mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-2xl lg:max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -74,7 +74,7 @@ export default function ExcerptSection({
               delay: 0.3 + i * 0.2,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="text-base md:text-lg leading-[2] tracking-wide mb-8 last:mb-0"
+            className="text-base md:text-lg lg:text-xl leading-[2] tracking-wide mb-8 last:mb-0"
           >
             {highlightText(paragraph, highlightWords, hColor)}
           </motion.p>

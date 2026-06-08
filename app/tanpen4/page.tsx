@@ -104,7 +104,7 @@ function SynopsisSection() {
     >
       <GridBackground broken />
 
-      <div ref={ref} className="relative z-10 max-w-3xl mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-3xl lg:max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Pull quote */}
         <motion.blockquote
           initial={{ opacity: 0, scale: 0.95 }}
@@ -134,7 +134,7 @@ function SynopsisSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-lg md:text-xl leading-[2.2] tracking-wide font-bold"
+          className="text-lg md:text-xl lg:text-2xl leading-[2.2] tracking-wide font-bold"
           style={{ color: story.theme.primary }}
         >
           {story.synopsis}
@@ -153,7 +153,7 @@ function ExcerptSection() {
     <section className="relative py-32 md:py-48 overflow-hidden" style={{ backgroundColor: story.theme.accent }}>
       <GridBackground />
 
-      <div ref={ref} className="relative z-10 max-w-2xl mx-auto px-6 md:px-8">
+      <div ref={ref} className="relative z-10 max-w-2xl lg:max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Flickering left border */}
         <motion.div
           className="absolute left-0 top-0 bottom-0 w-[2px]"
@@ -188,7 +188,7 @@ function ExcerptSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3 + i * 0.3 }}
-            className="text-base md:text-lg leading-[2] tracking-wide mb-8 last:mb-0"
+            className="text-base md:text-lg lg:text-xl leading-[2] tracking-wide mb-8 last:mb-0"
             style={{ color: story.theme.primary }}
           >
             {p.split(/(境界|創る者|複製する者|線)/).map((part, j) =>
