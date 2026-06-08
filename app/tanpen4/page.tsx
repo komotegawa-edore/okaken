@@ -162,7 +162,7 @@ function ExcerptSection() {
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "steps(5)",
+            ease: "linear",
           }}
         />
 

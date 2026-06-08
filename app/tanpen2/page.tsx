@@ -28,7 +28,7 @@ function TypewriterTitle() {
           transition={{
             duration: 0.05,
             delay: 1.0 + i * 0.08,
-            ease: "steps(1)",
+            ease: "easeOut",
           }}
           className="inline-block"
           style={{
