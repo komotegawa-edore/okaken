@@ -13,9 +13,9 @@ export default function Home() {
       <HeroSection />
 
       {/* Story Grid */}
-      <section className="relative py-24 md:py-40 px-6 md:px-10 bg-[var(--bg)]">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <section className="relative py-24 md:py-40 lg:py-48 px-6 md:px-10 lg:px-16 bg-[var(--bg)]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
             {stories.map((story, i) => (
               <StoryCard key={story.id} story={story} index={i} />
             ))}
@@ -24,8 +24,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 text-center border-t border-[var(--muted)]/10">
-        <p className="text-xs tracking-[0.3em] text-[var(--muted)] font-[family-name:var(--font-inter)]">
+      <footer className="py-20 md:py-24 text-center" style={{ backgroundColor: "var(--surface)" }}>
+        <p className="text-[10px] tracking-[0.5em] text-[var(--muted)] font-[family-name:var(--font-inter)]">
           okaken project
         </p>
       </footer>

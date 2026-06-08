@@ -13,80 +13,108 @@ interface StoryCardProps {
 export default function StoryCard({ story, index }: StoryCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const num = String(index + 1).padStart(2, "0");
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{
-        duration: 0.8,
+        duration: 0.9,
         delay: index * 0.15,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
     >
       <Link href={`/${story.slug}`} className="group block">
         <div
-          className="relative p-8 md:p-10 border border-[var(--muted)]/10 transition-all duration-500 overflow-hidden"
-          style={{ backgroundColor: `${story.theme.void}80` }}
+          className="relative overflow-hidden transition-all duration-500"
+          style={{ backgroundColor: story.theme.void }}
         >
+          {/* Large background number watermark */}
+          <div
+            className="absolute -top-4 -right-2 font-[family-name:var(--font-cormorant)] text-[120px] md:text-[160px] lg:text-[200px] font-bold leading-none select-none pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.06]"
+            style={{ color: story.theme.primary, opacity: 0.03 }}
+          >
+            {num}
+          </div>
+
           {/* Hover glow */}
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             style={{
-              background: `radial-gradient(circle at center, ${story.theme.primary}08, transparent 70%)`,
+              background: `radial-gradient(ellipse at 30% 50%, ${story.theme.primary}0a, transparent 70%)`,
             }}
           />
 
-          {/* Accent line */}
-          <motion.div
-            className="absolute top-0 left-0 right-0 h-[1px] origin-left"
+          {/* Top accent line - grows on hover */}
+          <div
+            className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-700 ease-out"
             style={{ backgroundColor: story.theme.primary }}
-            initial={{ scaleX: 0 }}
-            whileHover={{ scaleX: 1 }}
-            transition={{ duration: 0.6 }}
           />
 
-          <div className="relative z-10">
+          {/* Content */}
+          <div className="relative z-10 p-8 md:p-10 lg:p-12">
+            {/* Label */}
             <span
-              className="text-[10px] tracking-[0.3em] font-[family-name:var(--font-inter)] block mb-4"
-              style={{ color: story.theme.primary, opacity: 0.7 }}
+              className="text-[10px] tracking-[0.4em] uppercase font-[family-name:var(--font-inter)]"
+              style={{ color: story.theme.primary, opacity: 0.6 }}
             >
-              {story.id.toUpperCase().replace("TANPEN", "TANPEN ")}
+              Tanpen {num}
             </span>
 
+            {/* Title */}
             <h3
-              className="font-[family-name:var(--font-zen)] text-xl md:text-2xl mb-3 transition-colors duration-300"
-              style={{ color: "var(--text)" }}
+              className="font-[family-name:var(--font-zen)] text-xl md:text-2xl lg:text-3xl tracking-wider mt-4 mb-2 transition-colors duration-300 group-hover:text-[var(--text)]"
+              style={{ color: `${story.theme.primary}` }}
             >
               {story.title}
             </h3>
 
-            <p className="text-sm text-[var(--muted)] mb-6 font-[family-name:var(--font-inter)]">
+            {/* Subtitle */}
+            <p
+              className="text-xs md:text-sm tracking-[0.2em] font-[family-name:var(--font-inter)]"
+              style={{ color: `var(--muted)` }}
+            >
               {story.subtitle}
             </p>
 
-            <p className="text-sm leading-[1.8] text-[var(--text)]/60 line-clamp-3">
+            {/* Accent divider */}
+            <div
+              className="w-10 h-[1px] mt-6 mb-6 transition-all duration-500 group-hover:w-16"
+              style={{ backgroundColor: `${story.theme.primary}40` }}
+            />
+
+            {/* Synopsis */}
+            <p
+              className="text-sm md:text-base lg:text-base leading-[1.9] md:leading-[2] line-clamp-3"
+              style={{ color: `var(--text)`, opacity: 0.5 }}
+            >
               {story.synopsis}
             </p>
 
-            <div className="mt-6 flex items-center gap-2">
+            {/* Read action */}
+            <div className="mt-8 flex items-center gap-3">
               <span
-                className="text-xs tracking-[0.2em] font-[family-name:var(--font-inter)] transition-colors duration-300 group-hover:translate-x-1 transform"
+                className="text-[11px] tracking-[0.3em] uppercase font-[family-name:var(--font-inter)] transition-all duration-300 group-hover:tracking-[0.5em]"
                 style={{ color: story.theme.primary }}
               >
-                READ
+                Read
               </span>
               <motion.span
-                className="text-xs"
+                className="inline-block text-sm transition-transform duration-300 group-hover:translate-x-1"
                 style={{ color: story.theme.primary }}
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
               >
-                →
+                &rarr;
               </motion.span>
             </div>
           </div>
+
+          {/* Bottom accent bar */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[1px]"
+            style={{ backgroundColor: `${story.theme.primary}15` }}
+          />
         </div>
       </Link>
     </motion.div>
