@@ -26,9 +26,8 @@ function GridBackground({ broken = false }: { broken?: boolean }) {
         fill
         className="object-cover"
         style={{
-          opacity: broken ? 0.15 : 0.25,
+          opacity: broken ? 0.4 : 0.5,
           transform: broken ? "skewX(-2deg) skewY(1deg)" : "none",
-          mixBlendMode: "screen",
         }}
         sizes="100vw"
         priority={!broken}
