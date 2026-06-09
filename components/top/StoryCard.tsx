@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import type { Story } from "@/lib/stories";
 
 interface StoryCardProps {
@@ -15,7 +14,6 @@ export default function StoryCard({ story, index }: StoryCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const num = String(index + 1).padStart(2, "0");
-  const hasImage = !!story.cardImage;
 
   return (
     <motion.div
@@ -33,35 +31,13 @@ export default function StoryCard({ story, index }: StoryCardProps) {
           className="relative overflow-hidden transition-all duration-500"
           style={{ backgroundColor: story.theme.void }}
         >
-          {/* Card image background */}
-          {hasImage && (
-            <div className="absolute inset-0 transition-all duration-700 group-hover:scale-105">
-              <Image
-                src={story.cardImage!}
-                alt=""
-                fill
-                className="object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-700"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              {/* Gradient overlay for text readability */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(135deg, ${story.theme.void}e0 0%, ${story.theme.void}90 50%, ${story.theme.void}c0 100%)`,
-                }}
-              />
-            </div>
-          )}
-
-          {/* Large background number watermark (only when no image) */}
-          {!hasImage && (
-            <div
-              className="absolute -top-4 -right-2 font-[family-name:var(--font-cormorant)] text-[120px] md:text-[160px] lg:text-[200px] font-bold leading-none select-none pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.06]"
-              style={{ color: story.theme.primary, opacity: 0.03 }}
-            >
-              {num}
-            </div>
-          )}
+          {/* Large background number watermark */}
+          <div
+            className="absolute -top-4 -right-2 font-[family-name:var(--font-cormorant)] text-[120px] md:text-[160px] lg:text-[200px] font-bold leading-none select-none pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.06]"
+            style={{ color: story.theme.primary, opacity: 0.03 }}
+          >
+            {num}
+          </div>
 
           {/* Hover glow */}
           <div
@@ -73,7 +49,7 @@ export default function StoryCard({ story, index }: StoryCardProps) {
 
           {/* Top accent line - grows on hover */}
           <div
-            className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-700 ease-out z-20"
+            className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-700 ease-out"
             style={{ backgroundColor: story.theme.primary }}
           />
 
@@ -136,7 +112,7 @@ export default function StoryCard({ story, index }: StoryCardProps) {
 
           {/* Bottom accent bar */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-[1px] z-20"
+            className="absolute bottom-0 left-0 right-0 h-[1px]"
             style={{ backgroundColor: `${story.theme.primary}15` }}
           />
         </div>

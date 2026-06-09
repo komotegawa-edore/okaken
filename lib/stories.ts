@@ -14,7 +14,6 @@ export interface Story {
     void: string;
   };
   closingQuote: string;
-  cardImage?: string;
 }
 
 export const stories: Story[] = [
@@ -74,7 +73,6 @@ export const stories: Story[] = [
       void: "#0a0c0a",
     },
     closingQuote: "境界を壊すことは、新しい境界を創ることに他ならない。",
-    cardImage: "/assets/tanpen4/card-thumb.png",
   },
   {
     id: "tanpen6",

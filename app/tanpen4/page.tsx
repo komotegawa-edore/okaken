@@ -4,7 +4,6 @@ import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import { getStory } from "@/lib/stories";
 import StoryNavigation from "@/components/story/StoryNavigation";
 import ScrollProgress from "@/components/layout/ScrollProgress";
@@ -19,20 +18,17 @@ const story = getStory("tanpen4")!;
 
 function GridBackground({ broken = false }: { broken?: boolean }) {
   return (
-    <div className="absolute inset-0 pointer-events-none transition-opacity duration-1000">
-      <Image
-        src={broken ? "/assets/tanpen4/grid-broken.png" : "/assets/tanpen4/grid-clean.png"}
-        alt=""
-        fill
-        className="object-cover"
-        style={{
-          opacity: broken ? 0.4 : 0.5,
-          transform: broken ? "skewX(-2deg) skewY(1deg)" : "none",
-        }}
-        sizes="100vw"
-        priority={!broken}
-      />
-    </div>
+    <div
+      className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 255, 136, ${broken ? 0.02 : 0.06}) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 136, ${broken ? 0.02 : 0.06}) 1px, transparent 1px)
+        `,
+        backgroundSize: broken ? "60px 60px" : "40px 40px",
+        transform: broken ? "skewX(-2deg) skewY(1deg)" : "none",
+      }}
+    />
   );
 }
 
@@ -60,26 +56,6 @@ function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: story.theme.void }}
     >
-      {/* Hero background image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/assets/tanpen4/hero-bg.png"
-          alt=""
-          fill
-          className="object-cover"
-          style={{ opacity: 0.7 }}
-          sizes="100vw"
-          priority
-        />
-        {/* Vignette overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse at center, transparent 30%, ${story.theme.void} 80%)`,
-          }}
-        />
-      </div>
-
       <GridBackground />
 
       {/* Neon pulse border */}
